@@ -573,7 +573,7 @@ export default function PromoClient() {
             {/* Float card: video activity */}
             <div className="fc fc-2">
               <div className="fc-lbl">Monthly videos</div>
-              <div className="fc-val">2,400+</div>
+              <div className="fc-val">650+</div>
               <div className="fc-sub fc-green">▲ +18% this month</div>
             </div>
 
@@ -700,7 +700,7 @@ export default function PromoClient() {
                   ))}
                 </div>
                 <div className="chart-row">
-                  <div><div className="chart-num">2,400</div><div className="chart-lbl">Videos / month</div></div>
+                  <div><div className="chart-num">650+</div><div className="chart-lbl">Videos / month</div></div>
                   <div><div className="chart-num">17+</div><div className="chart-lbl">Active cities</div></div>
                   <div><div className="chart-num">+18%</div><div className="chart-lbl">Growth</div></div>
                 </div>
@@ -769,12 +769,12 @@ export default function PromoClient() {
         {/* STATS BAR */}
         <div className="stats-bar-s">
           <div className="wrap">
-            <h2 className="stats-bar-title rv">Millions of travelers<br />rely on Zoom City</h2>
+            <h2 className="stats-bar-title rv">Travelers are already<br />exploring with Zoom City</h2>
             <p className="stats-bar-sub rv d1">Trusted worldwide by modern explorers discovering cities in a new way.</p>
             <div className="stats-row rv d2">
               {[
-                { n: '105K', l: 'Active Users' },
-                { n: '2,400+', l: 'Video Reels' },
+                { n: '850+', l: 'Active Users' },
+                { n: '650+', l: 'Video Reels' },
                 { n: '17+', l: 'Cities Live' },
                 { n: '100%', l: 'Free to Download' },
               ].map(s => (
