@@ -36,7 +36,7 @@ const BENEFITS = [
   {
     icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFF32B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>,
     title: 'Community',
-    desc: 'Connect with local creators and travelers. Follow, like and share city content from around the world.',
+    desc: 'Connect with local creators and travelers. Follow and share city content from around the world.',
     screen: '/screen-profile.jpg',
   },
   {
@@ -46,9 +46,9 @@ const BENEFITS = [
     screen: '/screen-home.jpg',
   },
   {
-    icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFF32B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>,
-    title: 'GPS Efficiency',
-    desc: 'Track your walks offline, export GPX routes compatible with Garmin and OsmAnd apps.',
+    icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFF32B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.12 2.12 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>,
+    title: 'Manage Your Reels',
+    desc: 'Full control as a creator — edit, share or download your own video reels anytime.',
     screen: '/screen-map.jpg',
   },
   {
@@ -68,16 +68,16 @@ const STEPS = [
 const TESTIMONIALS = [
   { text: 'ZoomCity completely changed how I discover places when I travel. The video reels from locals are way more authentic than any travel blog.', name: 'Marija Petrović', role: 'Travel Photographer' },
   { text: 'Finally an app that combines maps, videos and tours in one place. I used it in Barcelona and found spots I would never have found otherwise.', name: 'Luca Moretti', role: 'Digital Nomad' },
-  { text: 'The offline GPS tracking saved me so many times while hiking. I can export my routes and share them with friends on Garmin.', name: 'Ana Kovač', role: 'Outdoor Explorer' },
+  { text: 'The city map made it so easy to find creators posting near me. I found three amazing spots in Barcelona in one afternoon.', name: 'Ana Kovač', role: 'Outdoor Explorer' },
   { text: 'I love posting my city reels and seeing who follows me from around the world. The community here is genuinely amazing.', name: 'Darko Nikolić', role: 'Content Creator' },
-  { text: 'The travel journal PDF export is incredible. I built a complete 7-day Rome itinerary and shared it as a beautiful PDF with my whole group.', name: 'Sophie Laurent', role: 'Travel Blogger' },
-  { text: 'I discovered a tiny local restaurant in Tokyo through a video reel. No tourist would ever find it on Google Maps. This app is gold.', name: 'James Park', role: 'Food Traveler' },
+  { text: 'I built a full picture of Rome before my trip just by watching reels from creators who had already been there. Felt like getting tips from a friend.', name: 'Sophie Laurent', role: 'Travel Blogger' },
+  { text: 'I discovered a tiny local restaurant in Bologna through a video reel. No tourist would ever find it on Google Maps. This app is gold.', name: 'James Park', role: 'Food Traveler' },
   { text: 'We used ZoomCity to plan our whole Barcelona trip. The community videos gave us a real sense of each neighborhood before we even arrived.', name: 'Elena Rossi', role: 'Travel Enthusiast' },
-  { text: 'The map is beautiful and actually works offline. I walked through Vienna for 3 hours without internet and had every street tracked.', name: 'Thomas Müller', role: 'City Walker' },
+  { text: 'The map is beautiful and so easy to browse. I tapped through creators in Frankfurt and had a full list of places within minutes.', name: 'Thomas Müller', role: 'City Walker' },
   { text: 'Posting my first video reel was so easy. Within a day I had followers from 5 different countries asking me about my city.', name: 'Camille Dupont', role: 'Local Guide' },
 ]
 
-const MARQUEE_CITIES = ['Barcelona', 'Paris', 'London', 'Amsterdam', 'Madrid', 'Florence', 'Rome', 'Tokyo', 'Dubai', 'New York', 'Berlin', 'Prague', 'Vienna', 'Lisbon', 'Athens', 'Budapest']
+const MARQUEE_CITIES = ['Amsterdam', 'Barcelona', 'Belgrade', 'Bologna', 'Bordeaux', 'Florence', 'Frankfurt', 'Ljubljana', 'London', 'Madrid', 'Milano', 'Munich', 'Novi Sad', 'Paris', 'Pula', 'Rome', 'Valencia']
 
 // Centralni telefon najveci. Svaki sledeci nivo: scale -= 1/6, centrisano po Y osi.
 // Gore i dole od centra svaki sledeci gubi H/6 — simetricno, transformOrigin center.
@@ -831,11 +831,9 @@ export default function PromoClient() {
             <div className="feat-row">
               {[
                 ['🎬','Video Reels'],['📍','City Pins'],['⭐','Reviews'],['🗺️','Maps'],
-                ['🏙️','Cities'],['📸','Photos'],['🚶','Walking Tours'],['💬','Comments'],
-                ['❤️','Likes'],['📤','Share'],['🔔','Notifications'],['👥','Community'],
+                ['🏙️','Cities'],['📸','Photos'],['📤','Share'],['👥','Community'],
                 ['🎬','Video Reels'],['📍','City Pins'],['⭐','Reviews'],['🗺️','Maps'],
-                ['🏙️','Cities'],['📸','Photos'],['🚶','Walking Tours'],['💬','Comments'],
-                ['❤️','Likes'],['📤','Share'],['🔔','Notifications'],['👥','Community'],
+                ['🏙️','Cities'],['📸','Photos'],['📤','Share'],['👥','Community'],
               ].map(([icon, label], idx) => (
                 <div key={idx} className="feat-pill"><span>{icon}</span>{label}</div>
               ))}
@@ -915,8 +913,8 @@ export default function PromoClient() {
                 <div className="ft-links">
                   <a href="#" className="ft-a">Video Reels</a>
                   <a href="#" className="ft-a">City Map</a>
-                  <a href="#" className="ft-a">GPS Tracking</a>
-                  <a href="#" className="ft-a">Travel Journal</a>
+                  <a href="#" className="ft-a">Community</a>
+                  <a href="#" className="ft-a">Video Sharing</a>
                 </div>
               </div>
               <div>
