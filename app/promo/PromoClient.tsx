@@ -939,8 +939,8 @@ export default function PromoClient() {
             <div className="ft-bottom">
               <span className="ft-copy">© 2026 Zoom City. All rights reserved.</span>
               <div style={{ display:'flex',gap:20 }}>
-                <a href="#" className="ft-a">Privacy Policy</a>
-                <a href="#" className="ft-a">Terms of Use</a>
+                <a href="/privacy-policy" className="ft-a">Privacy Policy</a>
+                <a href="/terms-of-use" className="ft-a">Terms of Use</a>
               </div>
             </div>
           </div>
