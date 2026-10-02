@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 
 export const metadata: Metadata = {
+  alternates: { canonical: '/downloads' },
   title: 'Download Zoom City',
   description: 'Download Zoom City and explore cities through video reels. Available on Android.',
   openGraph: {

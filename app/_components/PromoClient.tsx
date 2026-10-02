@@ -14,21 +14,37 @@ const SCREENSHOTS = [
   { src: '/screen-profile.jpg',     label: 'Profile' },
 ]
 
+// Sve stavke postoje u app-i (feature/merge-darius-maps, okt 2026) — ne dodavati najavljene funkcije
 const FEATURES = [
   {
     icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>,
     title: 'Video Reels by City',
-    desc: 'Short video reels from real travelers. Post your city moments and grow your audience globally.',
+    desc: 'Watch short reels from each city and post your own — record or upload in a few taps.',
   },
   {
-    icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>,
-    title: 'Interactive City Map',
-    desc: 'Live map with video pins from creators around the globe. Tap any city to see what\'s happening.',
+    icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>,
+    title: 'City Map, Offline Too',
+    desc: 'Browse cities and creators on the map, and download a city map so it works without signal.',
   },
   {
     icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>,
-    title: 'Tours & Top Places',
-    desc: 'Discover curated top places, hidden gems and local tours for every city you visit.',
+    title: 'Tours & Places',
+    desc: 'Local tours with a direct booking link, plus museums, parks, cafés and more in every city.',
+  },
+  {
+    icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>,
+    title: 'Walk, Run & Hike Tracker',
+    desc: 'GPS tracking with distance, pace per km, climb and steps — keeps recording with the screen locked.',
+  },
+  {
+    icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>,
+    title: 'Export & Share Routes',
+    desc: 'Export your route as GPX for Strava, Garmin or OsmAnd, or share it as an image.',
+  },
+  {
+    icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M5 8l6 6"/><path d="M4 14l6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="M22 22l-5-10-5 10"/><path d="M14 18h6"/></svg>,
+    title: 'Offline Translator',
+    desc: 'Essential travel phrases with pronunciation — food, directions, help — no internet needed.',
   },
 ]
 
@@ -36,13 +52,13 @@ const BENEFITS = [
   {
     icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFF32B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>,
     title: 'Community',
-    desc: 'Connect with local creators and travelers. Follow and share city content from around the world.',
+    desc: 'Follow travelers, like and comment on reels, and see who is posting in your city.',
     screen: '/screen-profile.jpg',
   },
   {
     icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFF32B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>,
-    title: 'Privacy & Security',
-    desc: 'Your travel data stays yours. Private routes, secure login and full control over your content.',
+    title: 'Your Routes Stay Yours',
+    desc: 'Walks and runs are saved on your phone. Nothing is shared unless you decide to post it.',
     screen: '/screen-home.jpg',
   },
   {
@@ -52,29 +68,25 @@ const BENEFITS = [
     screen: '/screen-map.jpg',
   },
   {
-    icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFF32B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>,
-    title: 'Growth Insights',
-    desc: 'See your video reach grow city by city. Track views, followers and engagement over time.',
+    icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFF32B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>,
+    title: 'Works Offline',
+    desc: 'Download a city map before you go. Your route, steps and map keep working without signal.',
     screen: '/screen-tours.jpg',
   },
 ]
 
 const STEPS = [
-  { title: 'Choose your city', desc: 'Select from our growing global network of cities and destinations.' },
-  { title: 'Watch & explore', desc: 'Discover authentic video reels from real local travelers and creators.' },
-  { title: 'Post & connect', desc: 'Share your own video reels, follow creators and build your community.' },
+  { title: 'Choose your city', desc: 'Pick one of 17 European cities — or just start an activity wherever you are.' },
+  { title: 'Watch & explore', desc: 'Reels, tours and places for that city, on a map you can take offline.' },
+  { title: 'Record & share', desc: 'Post your reels, track your routes and connect with other travelers.' },
 ]
 
-const TESTIMONIALS = [
-  { text: 'ZoomCity completely changed how I discover places when I travel. The video reels from locals are way more authentic than any travel blog.', name: 'Marija Petrović', role: 'Travel Photographer' },
-  { text: 'Finally an app that combines maps, videos and tours in one place. I used it in Barcelona and found spots I would never have found otherwise.', name: 'Luca Moretti', role: 'Digital Nomad' },
-  { text: 'The city map made it so easy to find creators posting near me. I found three amazing spots in Barcelona in one afternoon.', name: 'Ana Kovač', role: 'Outdoor Explorer' },
-  { text: 'I love posting my city reels and seeing who follows me from around the world. The community here is genuinely amazing.', name: 'Darko Nikolić', role: 'Content Creator' },
-  { text: 'I built a full picture of Rome before my trip just by watching reels from creators who had already been there. Felt like getting tips from a friend.', name: 'Sophie Laurent', role: 'Travel Blogger' },
-  { text: 'I discovered a tiny local restaurant in Bologna through a video reel. No tourist would ever find it on Google Maps. This app is gold.', name: 'James Park', role: 'Food Traveler' },
-  { text: 'We used ZoomCity to plan our whole Barcelona trip. The community videos gave us a real sense of each neighborhood before we even arrived.', name: 'Elena Rossi', role: 'Travel Enthusiast' },
-  { text: 'The map is beautiful and so easy to browse. I tapped through creators in Frankfurt and had a full list of places within minutes.', name: 'Thomas Müller', role: 'City Walker' },
-  { text: 'Posting my first video reel was so easy. Within a day I had followers from 5 different countries asking me about my city.', name: 'Camille Dupont', role: 'Local Guide' },
+// Za koga je app — umesto ranijih izmišljenih recenzija (lažna imena = rizik za poverenje i oglase)
+const AUDIENCES = [
+  { title: 'City travelers', desc: 'See a city through short videos before you go, then find tours and places nearby.' },
+  { title: 'Hikers & runners', desc: 'Track routes with pace, climb and steps, even far from a signal, and export them as GPX.' },
+  { title: 'Locals & creators', desc: 'Show your city to visitors. Post reels and get followed by travelers planning a trip.' },
+  { title: 'Tour guides & agencies', desc: 'Get your tours in front of travelers at the moment they choose what to do, with a direct booking link.' },
 ]
 
 const MARQUEE_CITIES = ['Amsterdam', 'Barcelona', 'Belgrade', 'Bologna', 'Bordeaux', 'Florence', 'Frankfurt', 'Ljubljana', 'London', 'Madrid', 'Milano', 'Munich', 'Novi Sad', 'Paris', 'Pula', 'Rome', 'Valencia']
@@ -205,13 +217,6 @@ export default function PromoClient() {
     if (raw < -half) return raw + total
     return raw
   }
-
-  // Testimonials — 3 columns, each duplicated for infinite scroll
-  const tRows = [
-    [TESTIMONIALS[0], TESTIMONIALS[3], TESTIMONIALS[6]],
-    [TESTIMONIALS[1], TESTIMONIALS[4], TESTIMONIALS[7]],
-    [TESTIMONIALS[2], TESTIMONIALS[5], TESTIMONIALS[8]],
-  ]
 
   return (
     <>
@@ -464,6 +469,9 @@ export default function PromoClient() {
         .testi-s{padding:100px 0;background:#0b1121;overflow:hidden}
         .testi-head{margin-bottom:56px}
         .testi-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-height:680px;overflow:hidden;mask-image:linear-gradient(to bottom,transparent,black 6%,black 92%,transparent);-webkit-mask-image:linear-gradient(to bottom,transparent,black 6%,black 92%,transparent)}
+        .aud-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:40px}
+        @media(max-width:1024px){.aud-grid{grid-template-columns:1fr 1fr}}
+        @media(max-width:640px){.aud-grid{grid-template-columns:1fr}}
         .testi-col{display:flex;flex-direction:column;gap:16px}
         .testi-card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:16px;padding:26px;flex-shrink:0;transition:border-color .3s}
         .testi-card:hover{border-color:rgba(255,243,43,.2)}
@@ -541,21 +549,21 @@ export default function PromoClient() {
           <div className="hero-left">
             <div className="hero-badge">
               <span className="hero-star"><svg width="11" height="11" viewBox="0 0 24 24" fill="#FFF32B"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span>
-              Introducing
+              New: activity tracker &amp; offline maps
             </div>
             <h1 className="hero-h1">Explore the<br />world through<br /><span className="glow">video reels</span></h1>
-            <p className="hero-desc">Discover cities like never before. Watch local video reels, explore interactive maps, book tours and uncover hidden gems.</p>
+            <p className="hero-desc">Discover cities through local video reels, find tours and places, and track your walks, runs and hikes — with maps that work offline.</p>
             <div className="hero-btns">
               <a href="#" className="sbtn off">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="#CDCDE0"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-                <div><div className="sbtn-sub">Download on the</div><div className="sbtn-main">App Store</div></div>
+                <div><div className="sbtn-sub">Coming soon on the</div><div className="sbtn-main">App Store</div></div>
               </a>
               <a href={GOOGLE_PLAY_URL} target="_blank" rel="noopener noreferrer" className="sbtn">
                 <svg width="24" height="24" viewBox="0 0 32 32" fill="none"><path d="M7.63 28.55L20.29 15.82 7.84 3.3C7.35 3.62 7 4.17 7 4.83v22.33c0 .57.25 1.06.63 1.38z" fill="#1be2fa"/><path d="M30.05 14.4C31.32 15.1 31.32 16.9 30.05 17.6l-5.12 2.82-4.64-4.6 4.4-4.44 5.36 2.97z" fill="#ffea00"/><path d="M24.93 20.42L20.29 15.82 7.63 28.55c.56.48 1.39.62 2.12.18l15.18-8.31z" fill="#fe3944"/><path d="M7.84 3.3l12.45 12.52 4.4-4.44L9.76 3.23C9.11 2.88 8.39 2.95 7.84 3.3z" fill="#11d574"/></svg>
                 <div><div className="sbtn-sub">Get it on</div><div className="sbtn-main">Google Play</div></div>
               </a>
             </div>
-            <p className="trusted-lbl">Trusted by travelers in</p>
+            <p className="trusted-lbl">Live in 17 cities</p>
             <div className="city-marquee">
               <div className="city-track">
                 {[...MARQUEE_CITIES, ...MARQUEE_CITIES].map((c, i) => <span key={i} className="city-pill">{c}</span>)}
@@ -568,30 +576,21 @@ export default function PromoClient() {
             <div className="hero-phone-wrap">
               <div className="hero-phone">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/screen-tours.jpg" alt="Zoom City" width={295} height={637} style={{ width:295,height:637,display:'block' }} />
+                <img src="/screen-tours.jpg" alt="Zoom City app — local tours in a city" width={295} height={637} style={{ width:295,height:637,display:'block' }} />
               </div>
             </div>
 
-            {/* Float card: cities live + bar chart */}
+            {/* Float kartice — samo istinite brojke (Firestore, okt 2026) */}
             <div className="fc fc-1">
-              <div className="fc-lbl">Cities live</div>
-              <div style={{ display:'flex',justifyContent:'space-between',alignItems:'center' }}>
-                <div className="fc-val">17+</div>
-                <span style={{ fontSize:'.62rem',color:'#4ade80',fontWeight:700 }}>+12.4%</span>
-              </div>
-              <div className="mini-bars">
-                {[40,62,48,74,55,88,68].map((h,i) => (
-                  <div key={i} className="mb" style={{ height:`${h}%`,background: i===5 ? '#FFF32B' : 'rgba(255,255,255,.18)' }} />
-                ))}
-              </div>
-              <div className="fc-sub" style={{ color:'rgba(203,213,225,.5)' }}>Active cities this month</div>
+              <div className="fc-lbl">Cities in the app</div>
+              <div className="fc-val">17</div>
+              <div className="fc-sub" style={{ color:'rgba(203,213,225,.5)' }}>Across Europe — more coming</div>
             </div>
 
-            {/* Float card: video activity */}
             <div className="fc fc-2">
-              <div className="fc-lbl">Monthly videos</div>
-              <div className="fc-val">650+</div>
-              <div className="fc-sub fc-green">▲ +18% this month</div>
+              <div className="fc-lbl">Local tours</div>
+              <div className="fc-val">31</div>
+              <div className="fc-sub fc-green">Book with local guides</div>
             </div>
 
             <div className="chip chip-ltr" style={{ top:'50%',left:'2%','--cd':'0s' } as any}>
@@ -606,7 +605,7 @@ export default function PromoClient() {
         </section>
 
         {/* PREMIUM FEATURES */}
-        <section className="feat-s">
+        <section className="feat-s" id="features">
           <div className="wrap">
             <div className="feat-head rv">
               <div>
@@ -637,16 +636,16 @@ export default function PromoClient() {
               <div className="provide-phones rv-l">
                 <div className="provide-glow" />
                 <div className="p-back p-phone spread-back">
-                  <Image src="/screen-home.jpg" alt="Home" width={210} height={453} style={{ width:210,height:'auto',display:'block' }} />
+                  <Image src="/screen-home.jpg" alt="Zoom City home screen with city video reels" width={210} height={453} style={{ width:210,height:'auto',display:'block' }} />
                 </div>
                 <div className="p-front p-phone spread-front">
-                  <Image src="/screen-map.jpg" alt="Map" width={235} height={507} style={{ width:235,height:'auto',display:'block' }} />
+                  <Image src="/screen-map.jpg" alt="Zoom City map with cities and creators" width={235} height={507} style={{ width:235,height:'auto',display:'block' }} />
                 </div>
               </div>
               <div className="rv-r">
                 <div className="pill gold">Features for you</div>
-                <h2 className="sh">We provide the<br />best for you</h2>
-                <p className="sp">A hybrid travel experience designed for modern explorers who need real content, real maps and real community.</p>
+                <h2 className="sh">Everything for<br />your next trip</h2>
+                <p className="sp">City videos, local tours, maps and your own walking, running and hiking routes — in one free app.</p>
                 <a href={GOOGLE_PLAY_URL} target="_blank" rel="noopener noreferrer" className="provide-cta">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M3 20.5v-17c0-.83 1-.96 1.5-.5l14 8.5-14 8.5c-.5.46-1.5.33-1.5-.5z"/></svg>
                   Download Free
@@ -657,13 +656,13 @@ export default function PromoClient() {
         </section>
 
         {/* PATH TO SUCCESS — deck of cards */}
-        <section className="path-s">
+        <section className="path-s" id="how-it-works">
           <div className="wrap">
             <div className="path-inner">
               <div className="rv-l">
                 <div className="pill">How it works</div>
                 <h2 className="sh">Path to<br />exploration</h2>
-                <p className="sp">Get started in minutes and discover the world through a completely new lens.</p>
+                <p className="sp">Get started in a minute — no subscription, no credit card.</p>
                 <div className="steps">
                   {STEPS.map((s, i) => (
                     <div key={s.title} className={`step rv d${i+1}`}>
@@ -709,27 +708,27 @@ export default function PromoClient() {
             </div>
             <div className="plat-grid rv">
               <div className="plat-card-dark">
-                <div className="plat-ct">Video activity</div>
-                <div className="plat-cd">Real-time stats from travelers posting across all cities.</div>
-                <div className="bars">
-                  {[32,55,42,70,52,85,64,92,74,60,78,88].map((h, i) => (
-                    <div key={i} className="bar" style={{ height:`${h}%`,background: i===9 ? '#FFF32B' : i===11 ? 'rgba(255,243,43,.55)' : 'rgba(255,255,255,.14)' }} />
+                <div className="plat-ct">Track every route</div>
+                <div className="plat-cd">Pace per km, climb and steps for every walk, run or hike — saved on your phone, even offline.</div>
+                <div className="bars" aria-label="Example: pace per kilometer">
+                  {[62,70,55,78,66,84,58,72,80,68,74,64].map((h, i) => (
+                    <div key={i} className="bar" style={{ height:`${h}%`,background: i===5 ? '#FFF32B' : i===8 ? 'rgba(255,243,43,.55)' : 'rgba(255,255,255,.14)' }} />
                   ))}
                 </div>
                 <div className="chart-row">
-                  <div><div className="chart-num">650+</div><div className="chart-lbl">Videos / month</div></div>
-                  <div><div className="chart-num">17+</div><div className="chart-lbl">Active cities</div></div>
-                  <div><div className="chart-num">+18%</div><div className="chart-lbl">Growth</div></div>
+                  <div><div className="chart-num">3</div><div className="chart-lbl">Walk · Run · Hike</div></div>
+                  <div><div className="chart-num">GPX</div><div className="chart-lbl">Strava · Garmin · OsmAnd</div></div>
+                  <div><div className="chart-num">0 €</div><div className="chart-lbl">No subscription</div></div>
                 </div>
               </div>
               <div className="plat-card-dark">
                 <div className="plat-ct">Global community</div>
-                <div className="plat-cd">Creators from every corner of the world sharing their cities.</div>
+                <div className="plat-cd">Travelers and locals sharing reels from 17 cities across Europe.</div>
                 <div className="int-rows">
                   {[
-                    ['BCN','PAR','LON','AMS','MAD','ROM','NYC','BER','TKY','DXB'],
-                    ['VIE','PRG','LIS','ATH','BUD','IST','SYD','DUB','SFO','MXC'],
-                    ['WAR','CPH','OSL','HEL','BRU','ZRH','MLN','SEV','VAL','BKK'],
+                    ['AMS','BCN','BEG','BLQ','BOD','FLR'],
+                    ['FRA','LJU','LON','MAD','MIL','MUC'],
+                    ['NSD','PAR','PUL','ROM','VLC','AMS'],
                   ].map((cities, row) => (
                     <div key={row} className={`int-track ${row % 2 === 0 ? 'int-track-l' : 'int-track-r'}`}>
                       {[...cities, ...cities].map((c, i) => (
@@ -751,7 +750,7 @@ export default function PromoClient() {
               <div className="benefits-left">
                 <div className="pill">Benefits</div>
                 <h2 className="sh">Ton of<br />benefits</h2>
-                <p className="sp">Designed to help travelers discover better outcomes across exploration, content and community.</p>
+                <p className="sp">Built for real trips — from planning at home to walking the streets without signal.</p>
               </div>
               {/* RIGHT — cards each sticky at same top → stacking effect */}
               <div className="benefits-cards">
@@ -786,13 +785,13 @@ export default function PromoClient() {
         {/* STATS BAR */}
         <div className="stats-bar-s">
           <div className="wrap">
-            <h2 className="stats-bar-title rv">Travelers are already<br />exploring with Zoom City</h2>
-            <p className="stats-bar-sub rv d1">Trusted worldwide by modern explorers discovering cities in a new way.</p>
+            <h2 className="stats-bar-title rv">Your city guide,<br />in your pocket</h2>
+            <p className="stats-bar-sub rv d1">Free on Android — videos, tours, places and maps in one app.</p>
             <div className="stats-row rv d2">
               {[
-                { n: '850+', l: 'Active Users' },
-                { n: '650+', l: 'Video Reels' },
-                { n: '17+', l: 'Cities Live' },
+                { n: '17', l: 'Cities' },
+                { n: '31', l: 'Local Tours' },
+                { n: '10', l: 'Place Categories' },
                 { n: '100%', l: 'Free to Download' },
               ].map(s => (
                 <div key={s.l} className="stat-item">
@@ -847,10 +846,10 @@ export default function PromoClient() {
           <div className="feat-flow">
             <div className="feat-row">
               {[
-                ['🎬','Video Reels'],['📍','City Pins'],['⭐','Reviews'],['🗺️','Maps'],
-                ['🏙️','Cities'],['📸','Photos'],['📤','Share'],['👥','Community'],
-                ['🎬','Video Reels'],['📍','City Pins'],['⭐','Reviews'],['🗺️','Maps'],
-                ['🏙️','Cities'],['📸','Photos'],['📤','Share'],['👥','Community'],
+                ['🎬','Video Reels'],['🎟️','Tours'],['🗺️','Offline Maps'],['🥾','Hike'],
+                ['🏃','Run'],['📈','Pace & Climb'],['📤','GPX Export'],['💬','Translator'],
+                ['🎬','Video Reels'],['🎟️','Tours'],['🗺️','Offline Maps'],['🥾','Hike'],
+                ['🏃','Run'],['📈','Pace & Climb'],['📤','GPX Export'],['💬','Translator'],
               ].map(([icon, label], idx) => (
                 <div key={idx} className="feat-pill"><span>{icon}</span>{label}</div>
               ))}
@@ -869,29 +868,18 @@ export default function PromoClient() {
           </div>
         </div>
 
-        {/* TESTIMONIALS — 3 columns auto-scroll up at different speeds */}
-        <section className="testi-s">
+        {/* MADE FOR — za koga je app */}
+        <section className="testi-s" id="who">
           <div className="wrap">
             <div className="testi-head rv">
-              <h2 className="sh">Traveler reviews</h2>
-              <p className="sp" style={{ marginTop:10 }}>What explorers say after discovering cities with Zoom City.</p>
+              <h2 className="sh">Made for explorers</h2>
+              <p className="sp" style={{ marginTop:10 }}>One app for discovering cities and recording your own way through them.</p>
             </div>
-            <div className="testi-cols">
-              {tRows.map((col, ci) => (
-                <div key={ci} className={`testi-col testi-track-${ci+1}`}>
-                  {/* Duplicated for infinite scroll */}
-                  {[...col, ...col].map((t, ti) => (
-                    <div key={ti} className="testi-card">
-                      <p className="testi-text">"{t.text}"</p>
-                      <div style={{ display:'flex',alignItems:'center',gap:12 }}>
-                        <div className="testi-av">{t.name[0]}</div>
-                        <div>
-                          <div className="testi-name">{t.name}</div>
-                          <div className="testi-role">{t.role}</div>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
+            <div className="aud-grid">
+              {AUDIENCES.map((a, i) => (
+                <div key={a.title} className={`testi-card rv-u d${i+1}`}>
+                  <h3 className="testi-name" style={{ fontSize:'1.05rem',marginBottom:10 }}>{a.title}</h3>
+                  <p className="testi-text" style={{ marginBottom:0 }}>{a.desc}</p>
                 </div>
               ))}
             </div>
@@ -899,9 +887,9 @@ export default function PromoClient() {
         </section>
 
         {/* DOWNLOAD CTA */}
-        <section className="dl-s">
+        <section className="dl-s" id="download">
           <h2 className="dl-h rv">Download the App</h2>
-          <p className="dl-sub rv d1">Start free and discover the world from anywhere.</p>
+          <p className="dl-sub rv d1">Free on Android. iPhone version coming soon.</p>
           <div className="dl-btns rv d2">
             <a href={GOOGLE_PLAY_URL} target="_blank" rel="noopener noreferrer" className="sbtl">
               <svg width="28" height="28" viewBox="0 0 32 32" fill="none"><path d="M7.63 28.55L20.29 15.82 7.84 3.3C7.35 3.62 7 4.17 7 4.83v22.33c0 .57.25 1.06.63 1.38z" fill="#1be2fa"/><path d="M30.05 14.4C31.32 15.1 31.32 16.9 30.05 17.6l-5.12 2.82-4.64-4.6 4.4-4.44 5.36 2.97z" fill="#ffea00"/><path d="M24.93 20.42L20.29 15.82 7.63 28.55c.56.48 1.39.62 2.12.18l15.18-8.31z" fill="#fe3944"/><path d="M7.84 3.3l12.45 12.52 4.4-4.44L9.76 3.23C9.11 2.88 8.39 2.95 7.84 3.3z" fill="#11d574"/></svg>
@@ -909,7 +897,7 @@ export default function PromoClient() {
             </a>
             <a href="#" className="sbtl off">
               <svg width="26" height="26" viewBox="0 0 24 24" fill="#CDCDE0"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-              <div><div className="sbtn-sub">DOWNLOAD ON THE</div><div className="sbtn-main">App Store</div></div>
+              <div><div className="sbtn-sub">COMING SOON ON THE</div><div className="sbtn-main">App Store</div></div>
             </a>
           </div>
         </section>
@@ -923,22 +911,22 @@ export default function PromoClient() {
                   <Image src="/zoom-city-logo.png" alt="Zoom City" width={28} height={25} style={{ objectFit:'contain' }} />
                   <span className="ft-logo-t">Zoom City</span>
                 </div>
-                <p className="ft-tagline">Discover the world through authentic video reels from real local travelers.</p>
+                <p className="ft-tagline">City video reels, local tours and offline maps — plus a walk, run and hike tracker.</p>
               </div>
               <div>
                 <div className="ft-col-h">Platform</div>
                 <div className="ft-links">
-                  <a href="#" className="ft-a">Video Reels</a>
-                  <a href="#" className="ft-a">City Map</a>
-                  <a href="#" className="ft-a">Community</a>
-                  <a href="#" className="ft-a">Video Sharing</a>
+                  <a href="#features" className="ft-a">Features</a>
+                  <a href="#how-it-works" className="ft-a">How it works</a>
+                  <a href="#who" className="ft-a">Who it&apos;s for</a>
+                  <a href="#download" className="ft-a">Download</a>
                 </div>
               </div>
               <div>
                 <div className="ft-col-h">App</div>
                 <div className="ft-links">
                   <a href={GOOGLE_PLAY_URL} target="_blank" rel="noopener noreferrer" className="ft-a">Google Play</a>
-                  <a href="#" className="ft-a">App Store (soon)</a>
+                  <span className="ft-a">App Store (soon)</span>
                   <a href="/downloads" className="ft-a">Downloads</a>
                 </div>
               </div>
@@ -946,8 +934,8 @@ export default function PromoClient() {
                 <div className="ft-col-h">Company</div>
                 <div className="ft-links">
                   <a href="/" className="ft-a">Home</a>
-                  <a href="#" className="ft-a">About</a>
-                  <a href="#" className="ft-a">Contact</a>
+                  <a href="/privacy-policy" className="ft-a">Privacy</a>
+                  <a href="/terms-of-use" className="ft-a">Terms</a>
                 </div>
               </div>
             </div>
