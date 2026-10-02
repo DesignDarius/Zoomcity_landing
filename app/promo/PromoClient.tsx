@@ -134,6 +134,16 @@ export default function PromoClient() {
     return () => obs.disconnect()
   }, [])
 
+  // Beskonačne animacije (marquee, ping, float…) rade samo u sekciji koja je na ekranu
+  useEffect(() => {
+    const obs = new IntersectionObserver(
+      entries => entries.forEach(e => e.target.classList.toggle('anim-paused', !e.isIntersecting)),
+      { rootMargin: '200px 0px' }
+    )
+    document.querySelectorAll('section').forEach(el => obs.observe(el))
+    return () => obs.disconnect()
+  }, [])
+
   // Deck spread — kad .deck uđe 40% u viewport, dodaje .spread klasu
   useEffect(() => {
     const el = deckRef.current
@@ -153,7 +163,11 @@ export default function PromoClient() {
     const PEEK = 14        // px each buried card shifts up per depth level
     const SCALE_STEP = 0.04 // scale reduction per depth level
 
-    const handleScroll = () => {
+    // Jednom po frejmu ekrana (rAF), ne na svaki scroll event — ranije je svaki pokret
+    // točkića merio i pomerao sve kartice, pa je slabiji laptop ispuštao frejmove ("blinkanje")
+    let frame = 0
+    const update = () => {
+      frame = 0
       const cards = document.querySelectorAll<HTMLElement>('.ben-sticky')
       if (!cards.length) return
 
@@ -168,17 +182,19 @@ export default function PromoClient() {
         const stuckIdx = stuck.indexOf(i)
         if (stuckIdx === -1) { glass.style.transform = ''; return }
         const depth = stuck.length - 1 - stuckIdx // 0 = active (topmost), 1+ = buried
-        if (depth === 0) {
-          glass.style.transform = ''
-        } else {
-          const scale = Math.max(0.82, 1 - depth * SCALE_STEP)
-          glass.style.transform = `scale(${scale}) translateY(${-(depth * PEEK)}px)`
-        }
+        const next = depth === 0 ? '' : `scale(${Math.max(0.82, 1 - depth * SCALE_STEP)}) translateY(${-(depth * PEEK)}px)`
+        if (glass.style.transform !== next) glass.style.transform = next
       })
+    }
+    const handleScroll = () => {
+      if (!frame) frame = requestAnimationFrame(update)
     }
 
     window.addEventListener('scroll', handleScroll, { passive: true })
-    return () => window.removeEventListener('scroll', handleScroll)
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+      if (frame) cancelAnimationFrame(frame)
+    }
   }, [])
 
 
@@ -231,6 +247,7 @@ export default function PromoClient() {
         .spread-front{animation:float-front 5s ease-in-out infinite}
 
         /* ── SCROLL REVEALS ── */
+        .anim-paused,.anim-paused *{animation-play-state:paused!important}
         .rv{opacity:0;transform:translateY(28px);transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1)}
         .rv-l{opacity:0;transform:translateX(-44px);transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1)}
         .rv-r{opacity:0;transform:translateX(44px);transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1)}
@@ -239,7 +256,7 @@ export default function PromoClient() {
         .d1{transition-delay:.07s!important}.d2{transition-delay:.16s!important}.d3{transition-delay:.27s!important}.d4{transition-delay:.4s!important}
 
         /* ── NAV ── */
-        .n{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:14px 48px;background:rgba(11,17,33,.92);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.06)}
+        .n{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:14px 48px;background:rgba(11,17,33,.97);border-bottom:1px solid rgba(255,255,255,.06)}
         .n-logo{display:flex;align-items:center;gap:12px;text-decoration:none}
         .n-logo-txt{font-family:var(--font-bebas-neue,sans-serif);font-size:1.6rem;color:#FFF32B;letter-spacing:.06em}
         .n-cta{background:#FFF32B;color:#0b1121;font-weight:800;font-size:.8rem;padding:10px 24px;border-radius:8px;text-decoration:none;letter-spacing:.04em;text-transform:uppercase;box-shadow:0 0 22px 0 rgba(255,243,43,.32);transition:box-shadow .25s ease,opacity .2s,transform .15s}
@@ -279,7 +296,7 @@ export default function PromoClient() {
         .hero-phone::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:88px;height:22px;background:#0b1121;border-radius:0 0 14px 14px;z-index:4}
 
         /* float cards */
-        .fc{position:absolute;z-index:10;background:rgba(11,17,33,.92);backdrop-filter:blur(18px);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:14px 18px;box-shadow:0 16px 40px rgba(0,0,0,.5)}
+        .fc{position:absolute;z-index:10;background:rgba(11,17,33,.96);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:14px 18px;box-shadow:0 16px 40px rgba(0,0,0,.5)}
         .fc-lbl{font-size:.58rem;font-weight:700;color:rgba(203,213,225,.4);letter-spacing:.1em;text-transform:uppercase;margin-bottom:4px}
         .fc-val{font-family:var(--font-bebas-neue,sans-serif);font-size:1.5rem;color:#FFF32B;line-height:1}
         .fc-sub{font-size:.68rem;margin-top:3px}
@@ -292,7 +309,7 @@ export default function PromoClient() {
         .mb{border-radius:3px;flex:1}
 
         /* data chips */
-        .chip{position:absolute;display:inline-flex;align-items:center;gap:7px;background:rgba(7,59,76,.85);backdrop-filter:blur(10px);border:1px solid rgba(255,243,43,.2);border-radius:50px;padding:6px 14px;font-size:.73rem;font-weight:600;color:#CDCDE0;white-space:nowrap;pointer-events:none}
+        .chip{position:absolute;display:inline-flex;align-items:center;gap:7px;background:rgba(7,59,76,.95);border:1px solid rgba(255,243,43,.2);border-radius:50px;padding:6px 14px;font-size:.73rem;font-weight:600;color:#CDCDE0;white-space:nowrap;pointer-events:none}
         .chip-ltr{animation:data-ltr 3.2s cubic-bezier(.4,0,.2,1) var(--cd,0s) infinite}
         .chip-rtl{animation:data-rtl 3.8s cubic-bezier(.4,0,.2,1) var(--cd,0s) infinite}
 
@@ -385,7 +402,7 @@ export default function PromoClient() {
         .ben-sticky{position:sticky;top:7rem;margin-bottom:4rem}
         .ben-sticky:last-child{margin-bottom:0}
         .benefits-cards{padding-bottom:140px}
-        .ben-glass{background:rgba(30,41,59,.30);backdrop-filter:blur(40px);-webkit-backdrop-filter:blur(40px);border-radius:.75rem;border:1px solid rgba(148,163,184,.10);padding:2rem 2rem 2rem 2rem;position:relative;overflow:hidden;transition:background .3s,border-color .3s,transform .35s cubic-bezier(.22,1,.36,1);transform-origin:top center;min-height:200px;display:flex;flex-direction:column;justify-content:center}
+        .ben-glass{background:rgba(30,41,59,.30);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-radius:.75rem;border:1px solid rgba(148,163,184,.10);padding:2rem 2rem 2rem 2rem;position:relative;overflow:hidden;transition:background .3s,border-color .3s;transform-origin:top center;will-change:transform;min-height:200px;display:flex;flex-direction:column;justify-content:center}
         .ben-glass:hover{background:rgba(30,41,59,.50);border-color:rgba(148,163,184,.18)}
         .ben-card-grid{display:grid;grid-template-columns:1fr auto;gap:1.5rem;align-items:center}
         .ben-bg-ico{position:absolute;bottom:-1.5rem;right:-1.5rem;width:8rem;height:8rem;opacity:.04;pointer-events:none}
