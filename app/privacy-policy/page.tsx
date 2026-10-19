@@ -191,7 +191,10 @@ export default function PrivacyPolicyPage() {
             <p>
               You may request the deletion of the personal data we have
               collected about you at any time, directly within the app
-              (Profile → Account settings) or by contacting us. Some data may
+              (Profile → Other → Settings → Delete account) or by contacting
+              us. Step-by-step instructions are on the{' '}
+              <a className="legal-email" href="/delete-account">Delete your account</a>{' '}
+              page. Some data may
               be retained where we have a legal obligation or lawful basis to
               do so.
             </p>
