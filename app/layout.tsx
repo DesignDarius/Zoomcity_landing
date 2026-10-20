@@ -17,7 +17,7 @@ const dmSans = DM_Sans({
 
 const TITLE = 'Zoom City — City Video Reels, Local Tours & Offline Maps'
 const DESCRIPTION =
-  'Discover European cities through local video reels, find tours and places, and track walks, runs and hikes with maps that work offline. Free on Android.'
+  'Discover European cities through local videos and photos, find tours and places, plan walking routes and track walks, runs and hikes with maps that work offline. Free on Android.'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://zoomcity.app'),

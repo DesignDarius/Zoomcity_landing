@@ -27,7 +27,7 @@ export default function OpengraphImage() {
           <span style={{ color: '#FFF32B' }}>through video reels</span>
         </div>
         <div style={{ display: 'flex', fontSize: 32, color: '#CDCDE0', marginTop: 34 }}>
-          Local tours · Offline maps · Walk, run &amp; hike tracker
+          Local tours · Offline maps · Route planner · Walk, run &amp; hike tracker
         </div>
         <div style={{ display: 'flex', fontSize: 26, color: '#8fa3b8', marginTop: 46 }}>Cities across Europe · Free on Android · zoomcity.app</div>
       </div>
