@@ -10,46 +10,6 @@ export const metadata: Metadata = {
   alternates: { canonical: '/' },
 }
 
-// Gradovi i broj tura iz app-ine baze (Firestore REST, javno čitanje) — osvežava se
-// jednom dnevno, pa novi grad (npr. Beč) sam stigne na sajt bez izmene koda
-export const revalidate = 86400
-
-const FIRESTORE = 'https://firestore.googleapis.com/v1/projects/expo-zoom-start/databases/(default)/documents'
-const FALLBACK_CITIES = ['Amsterdam', 'Barcelona', 'Belgrade', 'Bologna', 'Bordeaux', 'Florence', 'Frankfurt', 'Ljubljana', 'London', 'Madrid', 'Milano', 'Munich', 'Novi Sad', 'Paris', 'Pula', 'Rome', 'Valencia']
-const FALLBACK_TOURS = 31
-
-async function getAppStats(): Promise<{ cities: string[]; tourCount: number }> {
-  try {
-    const [cityRes, tourRes] = await Promise.all([
-      fetch(`${FIRESTORE}/location?pageSize=200`, { next: { revalidate } }),
-      fetch(`${FIRESTORE}:runAggregationQuery`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          structuredAggregationQuery: {
-            structuredQuery: { from: [{ collectionId: 'tour', allDescendants: true }] },
-            aggregations: [{ alias: 'n', count: {} }],
-          },
-        }),
-        next: { revalidate },
-      }),
-    ])
-    const cityJson = (await cityRes.json()) as { documents?: { fields?: { name?: { stringValue?: string } } }[] }
-    const cities = (cityJson.documents ?? [])
-      .map(d => d.fields?.name?.stringValue?.trim())
-      .filter((n): n is string => !!n)
-      .sort((a, b) => a.localeCompare(b))
-    const tourJson = (await tourRes.json()) as { result?: { aggregateFields?: { n?: { integerValue?: string } } } }[]
-    const tourCount = Number(tourJson?.[0]?.result?.aggregateFields?.n?.integerValue ?? 0)
-    return {
-      cities: cities.length > 0 ? cities : FALLBACK_CITIES,
-      tourCount: tourCount > 0 ? tourCount : FALLBACK_TOURS,
-    }
-  } catch {
-    return { cities: FALLBACK_CITIES, tourCount: FALLBACK_TOURS }
-  }
-}
-
 // Strukturirani podaci za Google — samo istinite informacije (bez ocena / broja preuzimanja
 // dok ih nema na Google Play-u)
 const jsonLd = {
@@ -90,12 +50,11 @@ const jsonLd = {
   ],
 }
 
-export default async function HomePage() {
-  const { cities, tourCount } = await getAppStats()
+export default function HomePage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <PromoClient cities={cities} tourCount={tourCount} />
+      <PromoClient />
     </>
   )
 }

@@ -76,7 +76,7 @@ const BENEFITS = [
 ]
 
 const STEPS = [
-  { title: 'Choose your city', desc: 'Pick a European city — or just start an activity wherever you are.' },
+  { title: 'Choose your city', desc: 'Pick one of 17 European cities — or just start an activity wherever you are.' },
   { title: 'Watch & explore', desc: 'Reels, tours and places for that city, on a map you can take offline.' },
   { title: 'Record & share', desc: 'Post your reels, track your routes and connect with other travelers.' },
 ]
@@ -89,6 +89,7 @@ const AUDIENCES = [
   { title: 'Tour guides & agencies', desc: 'Get your tours in front of travelers at the moment they choose what to do, with a direct booking link.' },
 ]
 
+const MARQUEE_CITIES = ['Amsterdam', 'Barcelona', 'Belgrade', 'Bologna', 'Bordeaux', 'Florence', 'Frankfurt', 'Ljubljana', 'London', 'Madrid', 'Milano', 'Munich', 'Novi Sad', 'Paris', 'Pula', 'Rome', 'Valencia']
 
 // Centralni telefon najveci. Svaki sledeci nivo: scale -= 1/6, centrisano po Y osi.
 // Gore i dole od centra svaki sledeci gubi H/6 — simetricno, transformOrigin center.
@@ -118,15 +119,7 @@ function getSlideTransform(dist: number): React.CSSProperties {
   }
 }
 
-type Props = { cities: string[]; tourCount: number }
-
-// Gradovi i broj tura stižu iz Firestore-a (app/page.tsx, osvežava se jednom dnevno) —
-// kad Uros doda grad, sajt se sam ažurira
-export default function PromoClient({ cities, tourCount }: Props) {
-  const cityCount = cities.length
-  const cityCodes = cities.map(c => c.slice(0, 3).toUpperCase())
-  const codeRows = [0, 1, 2].map(r => cityCodes.filter((_, i) => i % 3 === r))
-
+export default function PromoClient() {
   const [active, setActive] = useState(0)
   const total = SCREENSHOTS.length
   const autoRef = useRef<ReturnType<typeof setInterval> | null>(null)
@@ -515,11 +508,7 @@ export default function PromoClient({ cities, tourCount }: Props) {
           .hero{flex-direction:column;padding:60px 20px 0;min-height:auto;text-align:center}
           .hero-desc,.hero-btns{margin-left:auto;margin-right:auto}
           .hero-btns{justify-content:center}
-          .hero-left{width:100%}
-          /* bila fiksna širina 520px → na telefonu šire od ekrana, tekst isečen sa strane */
-          .hero-right{min-height:480px;flex:none;width:100%;max-width:520px}
-          .glow-orb{width:300px;height:300px;filter:blur(40px);opacity:.5}
-          .benefits-grid{grid-template-columns:1fr}
+          .hero-right{min-height:480px}
           .fc,.chip{display:none}
           .feat-head,.provide-inner,.path-inner,.benefits-inner{grid-template-columns:1fr;gap:36px}
           .feat-head-r{text-align:left}
@@ -535,9 +524,6 @@ export default function PromoClient({ cities, tourCount }: Props) {
         }
         @media(max-width:640px){
           .feat-grid{grid-template-columns:1fr}
-          .hero-h1{font-size:clamp(3rem,13.5vw,4.5rem)}
-          .hero-right{min-height:auto;padding:24px 0 40px}
-          .glow-orb{width:220px;height:220px}
           .testi-cols{grid-template-columns:1fr;max-height:500px}
           .stats-row{grid-template-columns:1fr 1fr}
           .ft-inner{grid-template-columns:1fr}
@@ -577,10 +563,10 @@ export default function PromoClient({ cities, tourCount }: Props) {
                 <div><div className="sbtn-sub">Get it on</div><div className="sbtn-main">Google Play</div></div>
               </a>
             </div>
-            <p className="trusted-lbl">Live in {cityCount} cities</p>
+            <p className="trusted-lbl">Live in 17 cities</p>
             <div className="city-marquee">
               <div className="city-track">
-                {[...cities, ...cities].map((c, i) => <span key={i} className="city-pill">{c}</span>)}
+                {[...MARQUEE_CITIES, ...MARQUEE_CITIES].map((c, i) => <span key={i} className="city-pill">{c}</span>)}
               </div>
             </div>
           </div>
@@ -597,13 +583,13 @@ export default function PromoClient({ cities, tourCount }: Props) {
             {/* Float kartice — samo istinite brojke (Firestore, okt 2026) */}
             <div className="fc fc-1">
               <div className="fc-lbl">Cities in the app</div>
-              <div className="fc-val">{cityCount}</div>
+              <div className="fc-val">17</div>
               <div className="fc-sub" style={{ color:'rgba(203,213,225,.5)' }}>Across Europe — more coming</div>
             </div>
 
             <div className="fc fc-2">
               <div className="fc-lbl">Local tours</div>
-              <div className="fc-val">{tourCount}</div>
+              <div className="fc-val">31</div>
               <div className="fc-sub fc-green">Book with local guides</div>
             </div>
 
@@ -737,11 +723,15 @@ export default function PromoClient({ cities, tourCount }: Props) {
               </div>
               <div className="plat-card-dark">
                 <div className="plat-ct">Global community</div>
-                <div className="plat-cd">Travelers and locals sharing reels from {cityCount} cities across Europe.</div>
+                <div className="plat-cd">Travelers and locals sharing reels from 17 cities across Europe.</div>
                 <div className="int-rows">
-                  {codeRows.map((rowCodes, row) => (
+                  {[
+                    ['AMS','BCN','BEG','BLQ','BOD','FLR'],
+                    ['FRA','LJU','LON','MAD','MIL','MUC'],
+                    ['NSD','PAR','PUL','ROM','VLC','AMS'],
+                  ].map((cities, row) => (
                     <div key={row} className={`int-track ${row % 2 === 0 ? 'int-track-l' : 'int-track-r'}`}>
-                      {[...rowCodes, ...rowCodes].map((c, i) => (
+                      {[...cities, ...cities].map((c, i) => (
                         <div key={i} className="int-badge">{c}</div>
                       ))}
                     </div>
@@ -799,8 +789,8 @@ export default function PromoClient({ cities, tourCount }: Props) {
             <p className="stats-bar-sub rv d1">Free on Android — videos, tours, places and maps in one app.</p>
             <div className="stats-row rv d2">
               {[
-                { n: String(cityCount), l: 'Cities' },
-                { n: String(tourCount), l: 'Local Tours' },
+                { n: '17', l: 'Cities' },
+                { n: '31', l: 'Local Tours' },
                 { n: '10', l: 'Place Categories' },
                 { n: '100%', l: 'Free to Download' },
               ].map(s => (
@@ -872,7 +862,7 @@ export default function PromoClient({ cities, tourCount }: Props) {
           <div className="mq-row">
             {[0,1].map(c => (
               <div key={c} className="mq-track">
-                {cities.map(city => <div key={city+c} className="mpill"><div className="mpill-d"/>{city}</div>)}
+                {MARQUEE_CITIES.map(city => <div key={city+c} className="mpill"><div className="mpill-d"/>{city}</div>)}
               </div>
             ))}
           </div>
