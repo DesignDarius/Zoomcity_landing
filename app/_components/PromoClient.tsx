@@ -18,8 +18,8 @@ const SCREENSHOTS = [
 const FEATURES = [
   {
     icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>,
-    title: 'Video Reels by City',
-    desc: 'Watch short reels from each city and post your own — record or upload in a few taps.',
+    title: 'Videos & Photos by City',
+    desc: 'Watch what travelers share from each city and post your own video or photo in a few taps.',
   },
   {
     icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>,
@@ -33,13 +33,13 @@ const FEATURES = [
   },
   {
     icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>,
-    title: 'Walk, Run & Hike Tracker',
-    desc: 'GPS tracking with distance, pace per km, climb and steps — keeps recording with the screen locked.',
+    title: 'Walk, Run, Hike & Ride',
+    desc: 'Distance, pace per km, steps and real elevation gain from terrain data. Keeps recording with the screen locked, and exports to GPX.',
   },
   {
-    icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>,
-    title: 'Export & Share Routes',
-    desc: 'Export your route as GPX for Strava, Garmin or OsmAnd, or share it as an image.',
+    icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>,
+    title: 'Plan Your Route',
+    desc: 'Type where you are going or drop a pin on the map. Get a walking route with time and turn-by-turn directions, saved for offline use.',
   },
   {
     icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M5 8l6 6"/><path d="M4 14l6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="M22 22l-5-10-5 10"/><path d="M14 18h6"/></svg>,
@@ -52,7 +52,7 @@ const BENEFITS = [
   {
     icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFF32B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>,
     title: 'Community',
-    desc: 'Follow travelers, like and comment on reels, and see who is posting in your city.',
+    desc: 'Follow travelers, like and comment on their posts, and see who is sharing from your city.',
     screen: '/screen-profile.jpg',
   },
   {
@@ -63,29 +63,29 @@ const BENEFITS = [
   },
   {
     icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFF32B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.12 2.12 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>,
-    title: 'Manage Your Reels',
-    desc: 'Full control as a creator — edit, share or download your own video reels anytime.',
+    title: 'Manage Your Posts',
+    desc: 'All your videos and photos in one grid on your profile. Edit, share, download or delete them anytime.',
     screen: '/screen-map.jpg',
   },
   {
     icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFF32B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>,
     title: 'Works Offline',
-    desc: 'Download a city map before you go. Your route, steps and map keep working without signal.',
+    desc: 'Download a city map before you go. Your planned route, recording, steps and map keep working without signal.',
     screen: '/screen-tours.jpg',
   },
 ]
 
 const STEPS = [
   { title: 'Choose your city', desc: 'Pick a European city — or just start an activity wherever you are.' },
-  { title: 'Watch & explore', desc: 'Reels, tours and places for that city, on a map you can take offline.' },
-  { title: 'Record & share', desc: 'Post your reels, track your routes and connect with other travelers.' },
+  { title: 'Watch & explore', desc: 'Videos, photos, tours and places for that city, on a map you can take offline.' },
+  { title: 'Record & share', desc: 'Post videos and photos, plan and track your routes, and connect with other travelers.' },
 ]
 
 // Za koga je app — umesto ranijih izmišljenih recenzija (lažna imena = rizik za poverenje i oglase)
 const AUDIENCES = [
   { title: 'City travelers', desc: 'See a city through short videos before you go, then find tours and places nearby.' },
-  { title: 'Hikers & runners', desc: 'Track routes with pace, climb and steps, even far from a signal, and export them as GPX.' },
-  { title: 'Locals & creators', desc: 'Show your city to visitors. Post reels and get followed by travelers planning a trip.' },
+  { title: 'Hikers & runners', desc: 'Plan a route, then track it with pace, steps and real climb, even far from a signal, and export it as GPX.' },
+  { title: 'Locals & creators', desc: 'Show your city to visitors. Post videos and photos and get followed by travelers planning a trip.' },
   { title: 'Tour guides & agencies', desc: 'Get your tours in front of travelers at the moment they choose what to do, with a direct booking link.' },
 ]
 
@@ -566,7 +566,7 @@ export default function PromoClient({ cities, tourCount }: Props) {
               New: activity tracker &amp; offline maps
             </div>
             <h1 className="hero-h1">Explore the<br />world through<br /><span className="glow">video reels</span></h1>
-            <p className="hero-desc">Discover cities through local video reels, find tours and places, and track your walks, runs and hikes — with maps that work offline.</p>
+            <p className="hero-desc">Discover cities through local videos and photos, find tours and places, plan your route and track your walks, runs and hikes — with maps that work offline.</p>
             <div className="hero-btns">
               <a href="#" className="sbtn off">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="#CDCDE0"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
@@ -659,7 +659,7 @@ export default function PromoClient({ cities, tourCount }: Props) {
               <div className="rv-r">
                 <div className="pill gold">Features for you</div>
                 <h2 className="sh">Everything for<br />your next trip</h2>
-                <p className="sp">City videos, local tours, maps and your own walking, running and hiking routes — in one free app.</p>
+                <p className="sp">City videos and photos, local tours, maps, route planning and your own walks, runs and hikes — in one free app.</p>
                 <a href={GOOGLE_PLAY_URL} target="_blank" rel="noopener noreferrer" className="provide-cta">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M3 20.5v-17c0-.83 1-.96 1.5-.5l14 8.5-14 8.5c-.5.46-1.5.33-1.5-.5z"/></svg>
                   Download Free
@@ -723,21 +723,21 @@ export default function PromoClient({ cities, tourCount }: Props) {
             <div className="plat-grid rv">
               <div className="plat-card-dark">
                 <div className="plat-ct">Track every route</div>
-                <div className="plat-cd">Pace per km, climb and steps for every walk, run or hike — saved on your phone, even offline.</div>
+                <div className="plat-cd">Pace per km, steps and real elevation gain for every walk, run, hike or ride — saved on your phone, even offline.</div>
                 <div className="bars" aria-label="Example: pace per kilometer">
                   {[62,70,55,78,66,84,58,72,80,68,74,64].map((h, i) => (
                     <div key={i} className="bar" style={{ height:`${h}%`,background: i===5 ? '#FFF32B' : i===8 ? 'rgba(255,243,43,.55)' : 'rgba(255,255,255,.14)' }} />
                   ))}
                 </div>
                 <div className="chart-row">
-                  <div><div className="chart-num">3</div><div className="chart-lbl">Walk · Run · Hike</div></div>
+                  <div><div className="chart-num">4</div><div className="chart-lbl">Walk · Run · Hike · Ride</div></div>
                   <div><div className="chart-num">GPX</div><div className="chart-lbl">Strava · Garmin · OsmAnd</div></div>
                   <div><div className="chart-num">0 €</div><div className="chart-lbl">No subscription</div></div>
                 </div>
               </div>
               <div className="plat-card-dark">
                 <div className="plat-ct">Global community</div>
-                <div className="plat-cd">Travelers and locals sharing reels from {cityCount} cities across Europe.</div>
+                <div className="plat-cd">Travelers and locals sharing videos and photos from {cityCount} cities across Europe.</div>
                 <div className="int-rows">
                   {codeRows.map((rowCodes, row) => (
                     <div key={row} className={`int-track ${row % 2 === 0 ? 'int-track-l' : 'int-track-r'}`}>
@@ -857,9 +857,9 @@ export default function PromoClient({ cities, tourCount }: Props) {
             <div className="feat-row">
               {[
                 ['🎬','Video Reels'],['🎟️','Tours'],['🗺️','Offline Maps'],['🥾','Hike'],
-                ['🏃','Run'],['📈','Pace & Climb'],['📤','GPX Export'],['💬','Translator'],
+                ['🏃','Run'],['🧭','Route Planner'],['📈','Pace & Climb'],['📷','Photos'],['📤','GPX Export'],['💬','Translator'],
                 ['🎬','Video Reels'],['🎟️','Tours'],['🗺️','Offline Maps'],['🥾','Hike'],
-                ['🏃','Run'],['📈','Pace & Climb'],['📤','GPX Export'],['💬','Translator'],
+                ['🏃','Run'],['🧭','Route Planner'],['📈','Pace & Climb'],['📷','Photos'],['📤','GPX Export'],['💬','Translator'],
               ].map(([icon, label], idx) => (
                 <div key={idx} className="feat-pill"><span>{icon}</span>{label}</div>
               ))}
@@ -921,7 +921,7 @@ export default function PromoClient({ cities, tourCount }: Props) {
                   <Image src="/zoom-city-logo.png" alt="Zoom City" width={28} height={25} style={{ objectFit:'contain' }} />
                   <span className="ft-logo-t">Zoom City</span>
                 </div>
-                <p className="ft-tagline">City video reels, local tours and offline maps — plus a walk, run and hike tracker.</p>
+                <p className="ft-tagline">City videos and photos, local tours and offline maps — plus route planning and a walk, run and hike tracker.</p>
               </div>
               <div>
                 <div className="ft-col-h">Platform</div>
