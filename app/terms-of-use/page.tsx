@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
+  alternates: { canonical: '/terms-of-use' },
   title: 'Terms of Use — Zoom City',
   description: 'The terms and conditions for using the Zoom City application.',
 }

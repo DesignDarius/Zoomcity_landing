@@ -15,28 +15,41 @@ const dmSans = DM_Sans({
   variable: '--font-dm-sans'
 })
 
+const TITLE = 'Zoom City — City Video Reels, Local Tours & Offline Maps'
+const DESCRIPTION =
+  'Discover 17 European cities through local video reels, find tours and places, and track walks, runs and hikes with maps that work offline. Free on Android.'
+
 export const metadata: Metadata = {
-  title: 'Zoom City – Something Big Is Coming',
-  description: 'We\'ve rebuilt Zoom City from the ground up. New features, faster performance, and a completely redesigned experience for travelers.',
-  generator: 'v0.app',
+  metadataBase: new URL('https://zoomcity.app'),
+  title: { default: TITLE, template: '%s | Zoom City' },
+  description: DESCRIPTION,
+  applicationName: 'Zoom City',
+  keywords: [
+    'travel app',
+    'city video reels',
+    'city guide app',
+    'local tours',
+    'offline city map',
+    'walking tracker',
+    'hiking tracker offline',
+    'running tracker',
+    'GPX export',
+    'travel phrasebook',
+    'Europe city travel',
+  ],
+  robots: { index: true, follow: true },
   openGraph: {
-    title: 'Zoom City – Something Big Is Coming',
-    description: 'We\'ve rebuilt Zoom City from the ground up. New features, faster performance, and a completely redesigned experience for travelers.',
-    images: [
-      {
-        url: '/zoom-city-logo.png',
-        width: 635,
-        height: 569,
-        alt: 'Zoom City Logo',
-      },
-    ],
     type: 'website',
+    url: 'https://zoomcity.app/',
+    siteName: 'Zoom City',
+    title: TITLE,
+    description: DESCRIPTION,
+    locale: 'en_US',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Zoom City – Something Big Is Coming',
-    description: 'We\'ve rebuilt Zoom City from the ground up. New features, faster performance, and a completely redesigned experience for travelers.',
-    images: ['/zoom-city-logo.png'],
+    title: TITLE,
+    description: DESCRIPTION,
   },
   icons: {
     icon: [

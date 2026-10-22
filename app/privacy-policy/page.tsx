@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
+  alternates: { canonical: '/privacy-policy' },
   title: 'Privacy Policy — Zoom City',
   description: 'How Zoom City collects, uses, and protects your personal data.',
 }
