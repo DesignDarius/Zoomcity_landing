@@ -12,6 +12,7 @@ const SCREENSHOTS = [
   { src: '/screen-tour-detail.jpg', label: 'Detail' },
   { src: '/screen-barcelona.jpg',   label: 'Top Places' },
   { src: '/screen-search.jpg',      label: 'Search' },
+  { src: '/screen-post.jpg',        label: 'Post' },
   { src: '/screen-profile.jpg',     label: 'Profile' },
 ]
 
