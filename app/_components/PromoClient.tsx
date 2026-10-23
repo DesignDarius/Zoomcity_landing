@@ -13,6 +13,8 @@ const SCREENSHOTS = [
   { src: '/screen-barcelona.jpg',   label: 'Top Places' },
   { src: '/screen-search.jpg',      label: 'Search' },
   { src: '/screen-post.jpg',        label: 'Post' },
+  { src: '/screen-activity.jpg',    label: 'Activity' },
+  { src: '/screen-route.jpg',       label: 'Your Route' },
   { src: '/screen-profile.jpg',     label: 'Profile' },
 ]
 
@@ -61,7 +63,7 @@ const BENEFITS = [
     icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFF32B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>,
     title: 'Your Routes Stay Yours',
     desc: 'Walks and runs are saved on your phone. Nothing is shared unless you decide to post it.',
-    screen: '/screen-home.jpg',
+    screen: '/screen-route.jpg',
   },
   {
     icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFF32B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.12 2.12 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>,
@@ -73,7 +75,7 @@ const BENEFITS = [
     icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFF32B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>,
     title: 'Works Offline',
     desc: 'Download a city map before you go. Your planned route, recording, steps and map keep working without signal.',
-    screen: '/screen-tours.jpg',
+    screen: '/screen-activity.jpg',
   },
 ]
 
