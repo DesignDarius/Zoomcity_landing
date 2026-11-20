@@ -297,11 +297,11 @@ export default function PromoClient({ cities, tourCount }: Props) {
         .sbtn-sub{font-size:.58rem;opacity:.5;text-transform:uppercase;letter-spacing:.1em;line-height:1}
         .sbtn-main{font-size:1rem;font-weight:700;line-height:1.2}
         .trusted-lbl{font-size:.68rem;text-transform:uppercase;letter-spacing:.1em;color:rgba(203,213,225,.33);margin-bottom:14px}
-        .city-marquee{overflow:hidden;mask-image:linear-gradient(to right,transparent,black 12%,black 88%,transparent);-webkit-mask-image:linear-gradient(to right,transparent,black 12%,black 88%,transparent)}
-        .city-track{display:flex;gap:10px;animation:marquee-l 20s linear infinite;white-space:nowrap}
+        /* mirna lista u redovima — klizanje (marquee + mask) je treperilo na Urosovom laptopu (20.11.) */
+        .city-marquee{max-width:560px}
+        .city-track{display:flex;flex-wrap:wrap;gap:8px}
         .city-pill{font-size:.75rem;font-weight:600;color:rgba(203,213,225,.38);border:1px solid rgba(255,255,255,.07);border-radius:50px;padding:5px 14px;white-space:nowrap;transition:border-color .2s,color .2s;cursor:pointer}
         .city-pill:hover{border-color:rgba(255,243,43,.45);color:#FFF32B}
-        .city-marquee:hover .city-track{animation-play-state:paused}
 
         /* hero right */
         .hero-right{position:relative;display:flex;align-items:center;justify-content:center;min-height:680px;z-index:2;flex:0 0 520px;width:520px}
@@ -519,7 +519,8 @@ export default function PromoClient({ cities, tourCount }: Props) {
           .n,.ft{padding:14px 20px}
           .hero{flex-direction:column;padding:60px 20px 0;min-height:auto;text-align:center}
           .hero-desc,.hero-btns{margin-left:auto;margin-right:auto}
-          .hero-btns{justify-content:center}
+          .hero-btns,.city-track{justify-content:center}
+          .city-marquee{margin:0 auto}
           .hero-left{width:100%}
           /* bila fiksna širina 520px → na telefonu šire od ekrana, tekst isečen sa strane */
           .hero-right{min-height:480px;flex:none;width:100%;max-width:520px}
@@ -585,7 +586,7 @@ export default function PromoClient({ cities, tourCount }: Props) {
             <p className="trusted-lbl">Live in {cityCount} cities</p>
             <div className="city-marquee">
               <div className="city-track">
-                {[...cities, ...cities].map((c, i) => <span key={i} className="city-pill">{c}</span>)}
+                {cities.map((c) => <span key={c} className="city-pill">{c}</span>)}
               </div>
             </div>
           </div>
