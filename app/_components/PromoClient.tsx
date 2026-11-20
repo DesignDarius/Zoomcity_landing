@@ -291,7 +291,7 @@ export default function PromoClient({ cities, tourCount }: Props) {
         .hero-h1 .glow::after{content:'';position:absolute;top:0;left:0;width:50%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.3) 50%,transparent);animation:shimmer 3.5s ease-in-out 1s infinite;pointer-events:none}
         .hero-desc{font-size:1.08rem;line-height:1.7;color:rgba(203,213,225,.68);margin-bottom:40px;max-width:460px}
         .hero-btns{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:44px}
-        .sbtn{display:inline-flex;align-items:center;gap:12px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:12px 22px;text-decoration:none;color:#fff;transition:all .2s;backdrop-filter:blur(8px)}
+        .sbtn{display:inline-flex;align-items:center;gap:12px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:12px 22px;text-decoration:none;color:#fff;transition:all .2s}
         .sbtn:hover{background:rgba(255,255,255,.09);border-color:rgba(255,255,255,.22);transform:translateY(-2px)}
         .sbtn.off{opacity:.36;pointer-events:none}
         .sbtn-sub{font-size:.58rem;opacity:.5;text-transform:uppercase;letter-spacing:.1em;line-height:1}
@@ -305,7 +305,8 @@ export default function PromoClient({ cities, tourCount }: Props) {
 
         /* hero right */
         .hero-right{position:relative;display:flex;align-items:center;justify-content:center;min-height:680px;z-index:2;flex:0 0 520px;width:520px}
-        .glow-orb{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:460px;height:460px;border-radius:50%;background:#FFF32B;filter:blur(22px);pointer-events:none;z-index:0}
+        /* gradijent umesto filter:blur — blur ispod animiranih čipova treperi u Chrome-u na laptopu (Uros 20.11.) */
+        .glow-orb{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:520px;height:520px;border-radius:50%;background:radial-gradient(circle closest-side,#FFF32B 77%,rgba(255,243,43,.5) 88%,rgba(255,243,43,0) 100%);pointer-events:none;z-index:0}
         .fdot{position:absolute;border-radius:50%;pointer-events:none}
         .hero-phone-wrap{position:relative;z-index:3}
         .hero-phone{border-radius:44px;border:3px solid rgba(255,243,43,.24);overflow:hidden;background:#000;box-shadow:0 40px 100px rgba(0,0,0,.75),0 0 60px rgba(255,243,43,.07);display:block;position:relative}
@@ -326,8 +327,9 @@ export default function PromoClient({ cities, tourCount }: Props) {
 
         /* data chips */
         .chip{position:absolute;display:inline-flex;align-items:center;gap:7px;background:rgba(7,59,76,.95);border:1px solid rgba(255,243,43,.2);border-radius:50px;padding:6px 14px;font-size:.73rem;font-weight:600;color:#CDCDE0;white-space:nowrap;pointer-events:none}
-        .chip-ltr{animation:data-ltr 3.2s cubic-bezier(.4,0,.2,1) var(--cd,0s) infinite}
-        .chip-rtl{animation:data-rtl 3.8s cubic-bezier(.4,0,.2,1) var(--cd,0s) infinite}
+        /* stalno vidljivi, blago lebde — pojavljivanje/nestajanje (data-ltr/rtl) je na laptopu izgledalo kao treperenje (Uros 20.11.) */
+        @keyframes chip-float{0%,100%{transform:translateY(-50%)}50%{transform:translateY(calc(-50% - 8px))}}
+        .chip-ltr,.chip-rtl{animation:chip-float 4.5s ease-in-out var(--cd,0s) infinite;will-change:transform}
 
         /* ── SECTION BASE ── */
         .wrap{max-width:1200px;margin:0 auto;padding:0 48px}
@@ -522,7 +524,7 @@ export default function PromoClient({ cities, tourCount }: Props) {
           .hero-left{width:100%}
           /* bila fiksna širina 520px → na telefonu šire od ekrana, tekst isečen sa strane */
           .hero-right{min-height:480px;flex:none;width:100%;max-width:520px}
-          .glow-orb{width:300px;height:300px;filter:blur(40px);opacity:.5}
+          .glow-orb{width:300px;height:300px;background:#FFF32B;filter:blur(40px);opacity:.5}
           .benefits-grid{grid-template-columns:1fr}
           .fc,.chip{display:none}
           .feat-head,.provide-inner,.path-inner,.benefits-inner{grid-template-columns:1fr;gap:36px}
