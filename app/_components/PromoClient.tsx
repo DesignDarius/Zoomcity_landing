@@ -327,9 +327,8 @@ export default function PromoClient({ cities, tourCount }: Props) {
 
         /* data chips */
         .chip{position:absolute;display:inline-flex;align-items:center;gap:7px;background:rgba(7,59,76,.95);border:1px solid rgba(255,243,43,.2);border-radius:50px;padding:6px 14px;font-size:.73rem;font-weight:600;color:#CDCDE0;white-space:nowrap;pointer-events:none}
-        /* stalno vidljivi, blago lebde — pojavljivanje/nestajanje (data-ltr/rtl) je na laptopu izgledalo kao treperenje (Uros 20.11.) */
-        @keyframes chip-float{0%,100%{transform:translateY(-50%)}50%{transform:translateY(calc(-50% - 8px))}}
-        .chip-ltr,.chip-rtl{animation:chip-float 4.5s ease-in-out var(--cd,0s) infinite;will-change:transform}
+        /* mirni, bez animacije — i nestajanje (data-ltr/rtl) i lebdenje su na Urosovom laptopu treperili (20.11.) */
+        .chip-ltr,.chip-rtl{transform:translateY(-50%)}
 
         /* ── SECTION BASE ── */
         .wrap{max-width:1200px;margin:0 auto;padding:0 48px}
